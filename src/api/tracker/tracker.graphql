@@ -1,0 +1,19 @@
+type Tracker {
+  _id: String
+  trackerNo: String
+  trackerContent: String
+}
+
+input TrackerInput {
+  trackerNo: String
+  trackerContent: String
+}
+
+type Mutation {
+  createTracker(input: TrackerInput): Tracker
+}
+
+type Query {
+  hello: String
+  tracker: [Tracker]
+}

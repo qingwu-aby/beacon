@@ -18,10 +18,11 @@ export class TrackerService {
   }
 
   async create(input: TrackerInput): Promise<Tracker> {
+    console.log('----', input)
     const tracker = new Tracker();
-    // tracker._id = Math.random();
-    tracker.trackerNo = input.trackerNo;
-    tracker.trackerContent = input.trackerContent;
+    tracker._id = input._id;
+    tracker.trackerNo = input.trackerNo || '';
+    tracker.trackerContent = input.trackerContent || '';
 
     return this.trackerRepository.save(tracker);
   }

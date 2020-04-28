@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { LoggerService } from '@nestjs/common';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ApiController } from './controller/api/api.controller';
-import { TrackerModule } from './tracker/tracker.module';
+import { TrackerController } from './api/tracker/tracker.controller';
+import { TrackerModule } from './api/tracker/tracker.module';
 import { join } from 'path';
-
 @Module({
   imports: [
     GraphQLModule.forRoot({
@@ -23,7 +24,7 @@ import { join } from 'path';
     }),
     TrackerModule
   ],
-  controllers: [AppController, ApiController],
+  controllers: [AppController, TrackerController],
   providers: [AppService],
 })
 export class AppModule {}
